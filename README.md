@@ -7,8 +7,8 @@ You can complete this tutorial using any OS: Windows, macOS, Linux, etc.
 This tutorial requires Python 3.6 or higher.
 You can download the latest Python version from [Python.org](https://www.python.org/downloads/).
 
-Once Python is installed, install pipenv.
-Run `pip install pipenv` from the command line.
+This tutorial also requires [pipenv](https://docs.pipenv.org/).
+To install pipenv, run `pip install pipenv` from the command line.
 
 For Web UI testing, you will need to install the latest version of [Google Chrome](https://www.google.com/chrome/).
 You can use other browsers with Selenium WebDriver,
