@@ -30,4 +30,7 @@ You will also need [git](https://git-scm.com/) to copy this project code.
 
 ## Setup Instructions
 
-Clone this repository. Further instructions are forthcoming.
+1. Clone this repository.
+2. Run `cd pyohio-2019-web-ui-testing` to enter the project.
+3. Run `pipenv install` to install the dependencies.
+4. Run `pipenv run python -m pytest` to verify that the framework can run tests.
