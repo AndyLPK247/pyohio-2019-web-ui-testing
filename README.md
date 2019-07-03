@@ -10,6 +10,10 @@ You can download the latest Python version from [Python.org](https://www.python.
 This tutorial also requires [pipenv](https://docs.pipenv.org/).
 To install pipenv, run `pip install pipenv` from the command line.
 
+You should also have a Python editor/IDE of your choice.
+Good choices include [PyCharm](https://www.jetbrains.com/pycharm/)
+and [Visual Studio Code](https://code.visualstudio.com/docs/languages/python).
+
 For Web UI testing, you will need to install the latest version of [Google Chrome](https://www.google.com/chrome/).
 You can use other browsers with Selenium WebDriver,
 but the tutorial will use [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools/) for finding Web element locators.
