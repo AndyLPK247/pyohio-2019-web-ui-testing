@@ -34,3 +34,23 @@ You will also need [git](https://git-scm.com/) to copy this project code.
 2. Run `cd pyohio-2019-web-ui-testing` to enter the project.
 3. Run `pipenv install` to install the dependencies.
 4. Run `pipenv run python -m pytest` to verify that the framework can run tests.
+5. Create a branch for your code changes. (See *Branching* below.)
+
+## Branching
+
+The `master` branch contains the code for the tutorial's starting point.
+In the `master` branch, the project is basically empty.
+
+The `example/*` branches contain the completed code for each tutorial chapter.
+The name and number of each branch corresponds to the chapter.
+If you get stuck, you can always check the example code.
+The `example/develop` branch is the main development branch for the examples.
+
+If you want to code along with the tutorial, then create a branch for your work off the `master` branch.
+A good branch name could be `tutorial/develop`.
+
+To create your own branch, run:
+
+    > git checkout master
+    > git branch tutorial/develop
+    > git checkout tutorial/develop
