@@ -42,14 +42,18 @@ If you are new to Git, [try learning the basics](https://try.github.io/).
 The `master` branch contains the code for the tutorial's starting point.
 The project is basically empty in the `master` branch.
 
-The `example/*` branches contain the completed code for each tutorial chapter.
-The name and number of each branch corresponds to the chapter.
-If you get stuck, you can always check the example code.
-The `example/develop` branch is the main development branch for the examples.
-
 If you want to code along with the tutorial, then create a branch for your work off the `master` branch.
 To create your own branch named `tutorial/develop`, run:
 
     > git checkout master
     > git branch tutorial/develop
     > git checkout tutorial/develop
+
+The `example/*` branches contain the completed code for tutorial chapters.
+If you get stuck, you can always check the example code.
+
+* `example/1-first-test`
+* `example/2-page-objects`
+* `example/3-webdriver-calls`
+* `example/4-locators`
+* `example/develop` (main development branch for the examples)
