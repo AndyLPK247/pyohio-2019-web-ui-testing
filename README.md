@@ -26,7 +26,8 @@ Make sure the version of ChromeDriver matches the version of Chrome, or else pro
 The ChromeDriver executable must also be on your [system path](https://en.wikipedia.org/wiki/PATH_(variable)).
 Please ask if you need help with this configuration.
 
-You will also need [git](https://git-scm.com/) to copy this project code.
+You will also need [Git](https://git-scm.com/) to copy this project code.
+If you are new to Git, [try learning the basics](https://try.github.io/).
 
 ## Setup Instructions
 
@@ -39,7 +40,7 @@ You will also need [git](https://git-scm.com/) to copy this project code.
 ## Branching
 
 The `master` branch contains the code for the tutorial's starting point.
-In the `master` branch, the project is basically empty.
+The project is basically empty in the `master` branch.
 
 The `example/*` branches contain the completed code for each tutorial chapter.
 The name and number of each branch corresponds to the chapter.
@@ -47,9 +48,7 @@ If you get stuck, you can always check the example code.
 The `example/develop` branch is the main development branch for the examples.
 
 If you want to code along with the tutorial, then create a branch for your work off the `master` branch.
-A good branch name could be `tutorial/develop`.
-
-To create your own branch, run:
+To create your own branch named `tutorial/develop`, run:
 
     > git checkout master
     > git branch tutorial/develop
