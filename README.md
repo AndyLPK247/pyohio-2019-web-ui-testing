@@ -1,7 +1,10 @@
 # pyohio-2019-web-ui-testing
-PyOhio 2019: Hands-On Web UI Testing Tutorial
+This repository contains the companion project for the PyOhio 2019 *Hands-On Web UI Testing* tutorial.
+If you are taking the tutorial, then please clone this repository and follow the instructions below.
 
-## System Prerequisites
+## Project Setup
+
+### System Prerequisites
 You can complete this tutorial using any OS: Windows, macOS, Linux, etc.
 
 This tutorial requires Python 3.6 or higher.
@@ -29,7 +32,7 @@ Please ask if you need help with this configuration.
 You will also need [Git](https://git-scm.com/) to copy this project code.
 If you are new to Git, [try learning the basics](https://try.github.io/).
 
-## Setup Instructions
+### Setup Instructions
 
 1. Clone this repository.
 2. Run `cd pyohio-2019-web-ui-testing` to enter the project.
@@ -37,7 +40,7 @@ If you are new to Git, [try learning the basics](https://try.github.io/).
 4. Run `pipenv run python -m pytest` to verify that the framework can run tests.
 5. Create a branch for your code changes. (See *Branching* below.)
 
-## Branching
+### Branching
 
 The `master` branch contains the code for the tutorial's starting point.
 The project is basically empty in the `master` branch.
@@ -49,7 +52,7 @@ To create your own branch named `tutorial/develop`, run:
     > git branch tutorial/develop
     > git checkout tutorial/develop
 
-The `example/*` branches contain the completed code for tutorial chapters.
+The `example/*` branches contain the completed code for tutorial parts.
 If you get stuck, you can always check the example code.
 
 * `example/1-first-test`
@@ -57,3 +60,66 @@ If you get stuck, you can always check the example code.
 * `example/3-webdriver-calls`
 * `example/4-locators`
 * `example/develop` (main development branch for the examples)
+
+## Tutorial Instructions
+
+### Part 1: Writing Our First Test
+
+We should always write test *cases* before writing any test *code*.
+Test cases are procedures that exercise behavior to verify goodness and identify badness.
+Test code simply automates test cases.
+Writing a test case first helps us form our thoughts well.
+
+Consider the following test case:
+
+```gherkin
+Scenario: Basic DuckDuckGo Search
+    Given the DuckDuckGo home page is displayed
+    When the user searches for “panda”
+    Then the search result title contains “panda”
+    And the search result query is “panda”
+    And the search result links pertain to “panda”
+```
+
+Let's implement this test using pytest.
+Create a new file named `test_search.py` under the `tests` directory,
+and add the following code:
+
+```python
+"""
+These tests cover DuckDuckGo searches.
+"""
+
+def test_basic_duckduckgo_search():
+
+    # Given the DuckDuckGo home page is displayed
+    # TODO
+
+    # When the user searches for "panda"
+    # TODO
+
+    # Then the search result title contains "panda"
+    # TODO
+    
+    # And the search result query is "panda"
+    # TODO
+    
+    # And the search result links pertain to "panda"
+    # TODO
+
+    raise Exception("Incomplete Test")
+```
+
+Adding comments to stub each step may seem trivial,
+but it's a good first step when writing new test cases.
+We can simply add code at each TODO line as we automate.
+Once the test is completed, we will remove the exception at the end.
+
+To avoid confusion when we run tests, let's remove the old placeholder test.
+Delete `tests/test_fw.py`.
+
+Rerun the tests using `pipenv run python -m pytest`.
+The `test_basic_duckduckgo_search` should be the only test that runs,
+and it should fail due to the "Incomplete Test" exception.
+
+Finally, commit your code change. Part 1 is complete!
