@@ -65,6 +65,8 @@ If you get stuck, you can always check the example code.
 
 ### Part 1: Writing Our First Test
 
+*Time Estimate: 5 Minutes*
+
 We should always write test *cases* before writing any test *code*.
 Test cases are procedures that exercise behavior to verify goodness and identify badness.
 Test code simply automates test cases.
