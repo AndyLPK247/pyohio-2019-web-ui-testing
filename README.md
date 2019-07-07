@@ -125,3 +125,15 @@ The `test_basic_duckduckgo_search` should be the only test that runs,
 and it should fail due to the "Incomplete Test" exception.
 
 Finally, commit your code change. Part 1 is complete!
+
+### Part 2: Defining Page Objects
+
+TBD
+
+### Part 3: Making Selenium WebDriver Calls
+
+TBD
+
+### Part 4: Writing Element Locators
+
+TBD
