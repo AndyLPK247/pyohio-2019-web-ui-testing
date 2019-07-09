@@ -128,7 +128,24 @@ Finally, commit your code change. Part 1 is complete!
 
 ### Part 2: Defining Page Objects
 
-TBD
+*Time Estimate: 10 Minutes*
+
+A **page object** is an object representing a Web page or component.
+They have *locators* for finding elements,
+as well as *interaction methods* that interact with the page under test.
+Page objects make low-level Selenium WebDriver calls
+so that tests can make short, readable calls instead of complex ones.
+
+Since we have our test steps, we know what pages and elements our test needs.
+There are two pages under test, each with a few interactions:
+
+1. The DuckDuckGo search page
+   * Load the page
+   * Search a phrase
+2. The DuckDuckGo results page
+   * Get the results
+   * Get the search query
+   * Get the title
 
 ### Part 3: Making Selenium WebDriver Calls
 
