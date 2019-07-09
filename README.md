@@ -147,6 +147,107 @@ There are two pages under test, each with a few interactions:
    * Get the search query
    * Get the title
 
+Understanding interactions with the Web app is more important than the code.
+We can write stubs for page object classes as we figure out the interactions.
+
+Create a new Python package named `pages`.
+To do this create a directory under the root directory named `pages`.
+Then, put a blank file in it named `__init__.py`.
+The `pages` directory shoult *not* be under the `tests` directory.
+Why? When using pytest, the `tests` folder should *not* be a package.
+
+Create a new module named `pages/search.py` and add the following code
+for the DuckDuckGo search page:
+
+```python
+"""
+This module contains DuckDuckGoSearchPage,
+the page object for the DuckDuckGo search page.
+"""
+
+
+class DuckDuckGoSearchPage:
+
+  def load(self):
+    # TODO
+    pass
+
+  def search(self, phrase):
+    # TODO
+    pass
+```
+
+Create another new module named `pages/result.py` and add the following code
+for the DuckDuckGo result page:
+
+```python
+"""
+This module contains DuckDuckGoResultPage,
+the page object for the DuckDuckGo search result page.
+"""
+
+
+class DuckDuckGoResultPage:
+  
+  def result_count_for_phrase(self, phrase):
+    # TODO
+    return 0
+  
+  def search_input_value(self):
+    # TODO
+    return ""
+
+  def title(self):
+    # TODO
+    return ""
+```
+
+Finally, update `test_basic_duckduckgo_search` in `tests/test_search.py`
+with the following code:
+
+```python
+"""
+These tests cover DuckDuckGo searches.
+"""
+
+from pages.result import DuckDuckGoResultPage
+from pages.search import DuckDuckGoSearchPage
+
+
+def test_basic_duckduckgo_search():
+  search_page = DuckDuckGoSearchPage()
+  result_page = DuckDuckGoResultPage()
+  PHRASE = "panda"
+  
+  # Given the DuckDuckGo home page is displayed
+  search_page.load()
+
+  # When the user searches for "panda"
+  search_page.search(PHRASE)
+
+  # Then the search result title contains "panda"
+  assert PHRASE in result_page.title()
+  
+  # And the search result query is "panda"
+  assert PHRASE == result_page.search_input_value()
+  
+  # And the search result links pertain to "panda"
+  assert result_page.result_count_for_phrase(PHRASE) > 0
+
+  # TODO: Remove this exception once the test is complete
+  raise Exception("Incomplete Test")
+```
+
+Notice how we are able to write all the test steps using page object calls and assertions.
+We also kept the step comments so the code is well-documented.
+Even though we haven't made any Selenium WebDriver calls, our test case function is nearly complete!
+Our code is readable and understandable.
+It delivers clear testing value.
+
+Rerun the test using `pipenv run python -m pytest`.
+The test should fail again, but this time, it should fail on one of the assertions.
+Then, commit your latest code changes. Part 2 is now complete!
+
 ### Part 3: Making Selenium WebDriver Calls
 
 TBD
