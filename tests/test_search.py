@@ -6,7 +6,7 @@ from pages.result import DuckDuckGoResultPage
 from pages.search import DuckDuckGoSearchPage
 
 
-def test_basic_duckduckgo_search():
+def test_basic_duckduckgo_search(browser):
   search_page = DuckDuckGoSearchPage()
   result_page = DuckDuckGoResultPage()
   PHRASE = "panda"
