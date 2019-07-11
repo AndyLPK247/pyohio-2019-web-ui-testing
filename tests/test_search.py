@@ -7,8 +7,8 @@ from pages.search import DuckDuckGoSearchPage
 
 
 def test_basic_duckduckgo_search(browser):
-  search_page = DuckDuckGoSearchPage()
-  result_page = DuckDuckGoResultPage()
+  search_page = DuckDuckGoSearchPage(browser)
+  result_page = DuckDuckGoResultPage(browser)
   PHRASE = "panda"
   
   # Given the DuckDuckGo home page is displayed
