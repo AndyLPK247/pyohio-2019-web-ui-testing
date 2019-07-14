@@ -116,6 +116,7 @@ Adding comments to stub each step may seem trivial,
 but it's a good first step when writing new test cases.
 We can simply add code at each TODO line as we automate.
 Once the test is completed, we will remove the exception at the end.
+Also, note that pytest expects all test functions to begin with `test_`.
 
 To avoid confusion when we run tests, let's remove the old placeholder test.
 Delete `tests/test_fw.py`.
