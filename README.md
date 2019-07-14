@@ -325,7 +325,7 @@ def test_basic_duckduckgo_search(browser):
 ```
 
 Every page object needs a reference to the WebDriver instance.
-Update the page object classes to have an `__init__` method.
+Update the page object classes to have `__init__` methods.
 
 In `pages/search.py`:
 
