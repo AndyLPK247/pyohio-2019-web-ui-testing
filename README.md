@@ -256,8 +256,6 @@ Then, commit your latest code changes. Part 2 is now complete!
 [Selenium WebDriver](https://www.seleniumhq.org/projects/webdriver/)
 is a tool for automating Web UI interactions with live browsers.
 It works with several popular programming languages and browser types.
-The [WebDriver API for Python](https://selenium-python.readthedocs.io/api.html)
-shows how to use it.
 
 The Selenium WebDriver package for Python is named `selenium`.
 Run `pipenv install selenium` to install it for our project.
@@ -315,12 +313,9 @@ or else zombie processes might lock system resources!
 Now, update `test_basic_duckduckgo_search` in `tests/test_search.py` to call the new fixture:
 
 ```python
-# ...
-
 def test_basic_duckduckgo_search(browser):
   search_page = DuckDuckGoSearchPage(browser)
   result_page = DuckDuckGoResultPage(browser)
-
   # ...
 ```
 
@@ -359,4 +354,99 @@ Then, commit your latest code changes. Part 3 is now complete!
 
 *Time Estimate: 15 Minutes*
 
-TBD
+Now we can implement all the page object methods using WebDriver calls.
+The [WebDriver API for Python](https://selenium-python.readthedocs.io/api.html)
+documents all WebDriver calls.
+If you aren't sure how to do something, look it up.
+WebDriver can do anything a user can do on a Web page!
+
+Let's start with `DuckDuckGoSearchPage`.
+The `load` method is a one-line WebDriver call,
+but it's good practice to make the URL a class variable:
+
+```python
+URL = 'https://www.duckduckgo.com'
+
+def load(self):
+  self.browser.get(self.URL)
+```
+
+The `search` method is a bit more complex because it interacts with an element.
+We need to use a *locator* to find the search input element,
+and then we need to *send keys* to type the search phrase into the element.
+
+First, import some key pieces from the `selenium` package:
+
+```python
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+```
+
+Then, write a locator for the search input element.
+If we inspect the page's HTML, we can see that the search element has a "name" attribute set to "q".
+Therefore, we can use the `By.NAME` locator to find the element like this:
+
+```python
+SEARCH_INPUT = (By.NAME, 'q')
+```
+
+It's good practice to write locators as page object class variables.
+That way, the locator can be reused by multiple page object methods.
+It is also good to write them as tuples - and we will see why next.
+
+The `search` method needs two parts: finding the element and sending the keystrokes:
+
+```python
+  def search(self, phrase):
+    search_input = self.browser.find_element(*self.SEARCH_INPUT)
+    search_input.send_keys(phrase + Keys.RETURN)
+```
+
+The `find_element` method will return the first element found by the locator.
+Notice how the locator uses the `*` operator to expand the tuple into arguments.
+The `selenium` package offers specific locator type methods (like `find_element_by_name`),
+but using the generic `find_element` method with argument expansion is better practice.
+If the locator type must be changed due to Web page updates,
+then the `find_elements` call would not need to be changed.
+
+The `send_keys` call sends the search phrase passed into the `search` method.
+This means that the page object can search any phrase!
+The addition of `Keys.RETURN` will send the ENTER/RETURN key as well,
+which will submit the input value to perform the search and load the results page.
+
+The full code for `pages/search.py` should look like this:
+
+```python
+"""
+This module contains DuckDuckGoSearchPage,
+the page object for the DuckDuckGo search page.
+"""
+
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+
+
+class DuckDuckGoSearchPage:
+
+  # URL
+
+  URL = 'https://www.duckduckgo.com'
+
+  # Locators
+
+  SEARCH_INPUT = (By.NAME, 'q')
+
+  # Initializer
+
+  def __init__(self, browser):
+    self.browser = browser
+
+  # Interaction Methods
+
+  def load(self):
+    self.browser.get(self.URL)
+
+  def search(self, phrase):
+    search_input = self.browser.find_element(*self.SEARCH_INPUT)
+    search_input.send_keys(phrase + Keys.RETURN)
+```
