@@ -57,8 +57,8 @@ If you get stuck, you can always check the example code.
 
 * `example/1-first-test`
 * `example/2-page-objects`
-* `example/3-webdriver-calls`
-* `example/4-locators`
+* `example/3-webdriver-setup`
+* `example/4-webdriver-calls`
 * `example/develop` (main development branch for the examples)
 
 ## Tutorial Instructions
@@ -249,10 +249,21 @@ Rerun the test using `pipenv run python -m pytest`.
 The test should fail again, but this time, it should fail on one of the assertions.
 Then, commit your latest code changes. Part 2 is now complete!
 
-### Part 3: Making Selenium WebDriver Calls
+### Part 3: Setting Up Selenium WebDriver
 
-TBD
+*Time Estimate: 10 Minutes*
 
-### Part 4: Writing Element Locators
+[Selenium WebDriver](https://www.seleniumhq.org/projects/webdriver/)
+is a tool for automating Web UI interactions with live browsers.
+It works with several popular programming languages and browser types.
+The [WebDriver API for Python](https://selenium-python.readthedocs.io/api.html)
+shows how to use it.
+
+The Selenium WebDriver package for Python is named `selenium`.
+Run `pipenv install selenium` to install it for our project.
+
+### Part 4: Making WebDriver Calls
+
+*Time Estimate: 15 Minutes*
 
 TBD
