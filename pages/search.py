@@ -3,11 +3,8 @@ This module contains DuckDuckGoSearchPage,
 the page object for the DuckDuckGo search page.
 """
 
-from selenium.webdriver.common.keys import Keys
-
 
 class DuckDuckGoSearchPage:
-  URL = 'https://www.duckduckgo.com'
 
   # Initializer
 
@@ -17,8 +14,9 @@ class DuckDuckGoSearchPage:
   # Interaction Methods
 
   def load(self):
-    self.browser.get(self.URL)
+    # TODO
+    pass
 
   def search(self, phrase):
-    search_input = None   # TODO
-    search_input.send_keys(phrase + Keys.RETURN)
+    # TODO
+    pass

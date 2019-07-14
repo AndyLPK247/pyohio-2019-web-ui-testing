@@ -14,12 +14,13 @@ class DuckDuckGoResultPage:
   # Interaction Methods
 
   def result_count_for_phrase(self, phrase):
-    results = None   # TODO
-    return len(results)
+    # TODO
+    return 0
   
   def search_input_value(self):
-    search_input = None   # TODO
-    return search_input.text
+    # TODO
+    return ""
 
   def title(self):
-    return self.browser.title
+    # TODO
+    return ""
