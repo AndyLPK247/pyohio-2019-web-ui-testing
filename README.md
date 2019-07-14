@@ -398,9 +398,9 @@ It is also good to write them as tuples - and we will see why next.
 The `search` method needs two parts: finding the element and sending the keystrokes:
 
 ```python
-  def search(self, phrase):
-    search_input = self.browser.find_element(*self.SEARCH_INPUT)
-    search_input.send_keys(phrase + Keys.RETURN)
+def search(self, phrase):
+  search_input = self.browser.find_element(*self.SEARCH_INPUT)
+  search_input.send_keys(phrase + Keys.RETURN)
 ```
 
 The `find_element` method will return the first element found by the locator.
