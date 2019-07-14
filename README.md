@@ -262,6 +262,99 @@ shows how to use it.
 The Selenium WebDriver package for Python is named `selenium`.
 Run `pipenv install selenium` to install it for our project.
 
+Every test should use its own WebDriver instance.
+This keeps things simple and safe.
+The best way to set up the WebDriver instance is using a
+[pytest fixture](https://docs.pytest.org/en/latest/fixture.html).
+Fixtures are basically setup and cleanup functions.
+As a best practice, they should be placed in a `conftest.py` module so they can be used by any test.
+
+Create a new file named `tests/conftest.py` and add the following code:
+
+```python
+"""
+This module contains shared fixtures.
+"""
+
+import pytest
+import selenium.webdriver
+
+
+@pytest.fixture
+def browser():
+
+  # Initialize the ChromeDriver instance
+  b = selenium.webdriver.Chrome()
+
+  # Make its calls wait up to 10 seconds for elements to appear
+  b.implicitly_wait(10)
+
+  # Return the WebDriver instance for the setup
+  yield b
+
+  # Quit the WebDriver instance for the cleanup
+  b.quit()
+```
+
+Our fixture uses Chrome as the browser.
+Other browser types could be used.
+Real-world projects often read browser choice from a config file here.
+
+The implicit wait will make sure WebDriver calls wait for elements to appear before sending calls to them.
+10 seconds should be reasonable for our test project's needs.
+For larger projects, however, setting explicit waits is a better practice
+because different calls need different wait times.
+Read more about implicit versus explicit waits [here](https://selenium-python.readthedocs.io/waits.html).
+
+The `yield` statement makes the `browser` fixture a generator.
+The first iteration will do the "setup" steps,
+while the second iteration will do the "cleanup" steps.
+Always make sure to *quit* the WebDriver instance as part of cleanup,
+or else zombie processes might lock system resources!
+
+Now, update `test_basic_duckduckgo_search` in `tests/test_search.py` to call the new fixture:
+
+```python
+# ...
+
+def test_basic_duckduckgo_search(browser):
+  search_page = DuckDuckGoSearchPage(browser)
+  result_page = DuckDuckGoResultPage(browser)
+
+  # ...
+```
+
+Every page object needs a reference to the WebDriver instance.
+Update the page object classes to have an `__init__` method.
+
+In `pages/search.py`:
+
+```python
+class DuckDuckGoSearchPage:
+
+  def __init__(self, browser):
+    self.browser = browser
+
+  # ...
+```
+
+And in `pages/result.py`:
+
+```python
+class DuckDuckGoResultPage:
+  
+  def __init__(self, browser):
+    self.browser = browser
+
+  # ...
+```
+
+Rerun the test using `pipenv run python -m pytest` to test the fixture.
+Even though the test should still fail,
+Chrome should briefly pop up for a few seconds while the test is running.
+Make sure Chrome quits once the test is done.
+Then, commit your latest code changes. Part 3 is now complete!
+
 ### Part 4: Making WebDriver Calls
 
 *Time Estimate: 15 Minutes*
