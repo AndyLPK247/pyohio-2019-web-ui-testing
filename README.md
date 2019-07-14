@@ -348,7 +348,8 @@ Rerun the test using `pipenv run python -m pytest` to test the fixture.
 Even though the test should still fail,
 Chrome should briefly pop up for a few seconds while the test is running.
 Make sure Chrome quits once the test is done.
-Then, commit your latest code changes. Part 3 is now complete!
+Then, commit your latest code changes.
+Part 3 is now complete!
 
 ### Part 4: Making WebDriver Calls
 
@@ -450,3 +451,139 @@ class DuckDuckGoSearchPage:
     search_input = self.browser.find_element(*self.SEARCH_INPUT)
     search_input.send_keys(phrase + Keys.RETURN)
 ```
+
+Now, let's do `DuckDuckGoResultPage`.
+The `title` method is the easiest one because it just returns a property value:
+
+```python
+def title(self):
+  return self.browser.title
+```
+
+The `search_input_value` method is similar to the `search` method from `DuckDuckGoSearchPage`,
+but instead of sending a command, it asks for state from the page.
+Thankfully, it uses the same locator.
+(The "value" attribute contains the text a user types into an "input" element.)
+
+```python
+from selenium.webdriver.common.by import By
+
+SEARCH_INPUT = (By.NAME, 'q')
+
+def search_input_value(self):
+  search_input = self.browser.find_element(*self.SEARCH_INPUT)
+  return search_input.get_attribute('value')
+```
+
+The `result_count_for_phrase` method is the most complex.
+The test must verify that the result page displays links relating to the search phrase.
+This method should find all result links that contain the search phrase in their display texts.
+Then, it should return the count.
+The test asserts that the count is greater than zero.
+This assertion may seem weak because it could allow some results to be unrelated to the phrase,
+but it is good enough for the nature of a basic search test.
+(A more rigorous test could and should more carefully cover search result goodness.)
+
+How can we write a locator that finds elements based on text?
+We can use XPath:
+
+```python
+@classmethod
+def PHRASE_RESULTS(cls, phrase):
+  xpath = f"//div[@id='links']//*[contains(text(), '{phrase}')]"
+  return (By.XPATH, xpath)
+```
+
+`PHRASE_RESULT` is a method because the phrase is a parameter for the XPath.
+It still returns a tuple so that it can work like other locators.
+
+The `result_count_for_phrase` method uses it like this:
+
+```python
+def result_count_for_phrase(self, phrase):
+  results = self.browser.find_elements(*self.PHRASE_RESULTS(phrase))
+  return len(results)
+```
+
+The full code for `pages/result.py` should look like this:
+
+```python
+"""
+This module contains DuckDuckGoResultPage,
+the page object for the DuckDuckGo search result page.
+"""
+
+from selenium.webdriver.common.by import By
+
+
+class DuckDuckGoResultPage:
+  
+  # Locators
+
+  SEARCH_INPUT = (By.NAME, 'q')
+
+  @classmethod
+  def PHRASE_RESULTS(cls, phrase):
+    xpath = f"//div[@id='links']//*[contains(text(), '{phrase}')]"
+    return (By.XPATH, xpath)
+
+  # Initializer
+
+  def __init__(self, browser):
+    self.browser = browser
+
+  # Interaction Methods
+
+  def result_count_for_phrase(self, phrase):
+    results = self.browser.find_elements(*self.PHRASE_RESULTS(phrase))
+    return len(results)
+  
+  def search_input_value(self):
+    search_input = self.browser.find_element(*self.SEARCH_INPUT)
+    return search_input.get_attribute('value')
+
+  def title(self):
+    return self.browser.title
+```
+
+Finally, remove the "incomplete" exception from `tests/test_search.py`.
+That module's code should look like this:
+
+```python
+"""
+These tests cover DuckDuckGo searches.
+"""
+
+from pages.result import DuckDuckGoResultPage
+from pages.search import DuckDuckGoSearchPage
+
+
+def test_basic_duckduckgo_search(browser):
+  search_page = DuckDuckGoSearchPage(browser)
+  result_page = DuckDuckGoResultPage(browser)
+  PHRASE = "panda"
+
+  # Given the DuckDuckGo home page is displayed
+  search_page.load()
+
+  # When the user searches for "panda"
+  search_page.search(PHRASE)
+
+  # Then the search result title contains "panda"
+  assert PHRASE in result_page.title()
+  
+  # And the search result query is "panda"
+  assert PHRASE == result_page.search_input_value()
+  
+  # And the search result links pertain to "panda"
+  assert result_page.result_count_for_phrase(PHRASE) > 0
+```
+
+Rerun the test using `pipenv run python -m pytest`.
+Now, finally, it should run to completion and pass!
+The test will take a few second to run because it must wait for page loads.
+Chrome should pop up and automatically go though all test steps.
+Try not to interfere with the browser as the test runs.
+Make sure pytest doesn't report any failures when it completes.
+
+Congrats! You have completed the guided part of this tutorial!
