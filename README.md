@@ -587,3 +587,7 @@ Try not to interfere with the browser as the test runs.
 Make sure pytest doesn't report any failures when it completes.
 
 Congrats! You have completed the guided part of this tutorial!
+
+## Independent Exercises
+
+TBD
