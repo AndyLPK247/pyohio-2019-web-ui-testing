@@ -65,7 +65,7 @@ If you get stuck, you can always check the example code.
 
 ### Part 1: Writing Our First Test
 
-*Time Estimate: 5 Minutes*
+*Time Estimate: 4 Minutes*
 
 We should always write test *cases* before writing any test *code*.
 Test cases are procedures that exercise behavior to verify goodness and identify badness.
@@ -129,7 +129,7 @@ Finally, commit your code change. Part 1 is complete!
 
 ### Part 2: Defining Page Objects
 
-*Time Estimate: 10 Minutes*
+*Time Estimate: 8 Minutes*
 
 A **page object** is an object representing a Web page or component.
 They have *locators* for finding elements,
@@ -251,7 +251,7 @@ Then, commit your latest code changes. Part 2 is now complete!
 
 ### Part 3: Setting Up Selenium WebDriver
 
-*Time Estimate: 10 Minutes*
+*Time Estimate: 8 Minutes*
 
 [Selenium WebDriver](https://www.seleniumhq.org/projects/webdriver/)
 is a tool for automating Web UI interactions with live browsers.
@@ -353,7 +353,7 @@ Part 3 is now complete!
 
 ### Part 4: Making WebDriver Calls
 
-*Time Estimate: 15 Minutes*
+*Time Estimate: 16 Minutes*
 
 Now we can implement all the page object methods using WebDriver calls.
 The [WebDriver API for Python](https://selenium-python.readthedocs.io/api.html)
