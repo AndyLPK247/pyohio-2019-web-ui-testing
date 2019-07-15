@@ -2,6 +2,14 @@
 This repository contains the companion project for the PyOhio 2019 *Hands-On Web UI Testing* tutorial.
 If you are taking the tutorial, then please clone this repository and follow the instructions below.
 
+## Author
+
+The tutorial is written and delivered by **Andrew Knight** (aka *Pandy*), the "Automation Panda".
+
+* Twitter: [@AutomationPanda](https://twitter.com/AutomationPanda)
+* Blog: [AutomationPanda.com](https://automationpanda.com/)
+* LinkedIn: [andrew-leland-knight](https://www.linkedin.com/in/andrew-leland-knight/)
+
 ## Project Setup
 
 ### System Prerequisites
@@ -610,3 +618,35 @@ Here are some suggestions:
 These tests will require new page objects, locators, and interaction methods.
 See how many tests you can automate on your own!
 If you get stuck, ask for help.
+
+## Additional Resources
+
+This PyOhio 2019 *Hands-On Web UI Testing* tutorial is actually based on another tutorial by Andrew Knight:
+[Web Testing Made Easy with Python, Pytest and Selenium WebDriver](https://blog.testproject.io/2019/07/09/open-source-test-automation-python-pytest-selenium-webdriver/)
+from the [TestProject blog](https://blog.testproject.io/).
+The TestProject tutorial is written as a series of blog articles.
+It goes into deeper detail but takes more time to complete.
+It serves as a great companion course for the PyOhio tutorial.
+
+[Test Automation University](https://testautomationu.applitools.com/)
+offers free online courses on several testing and automation topics.
+All TAU courses are great, but the following ones compliment this tutorial especially well:
+
+* [Web Element Locator Strategies](https://testautomationu.applitools.com/web-element-locator-strategies/) shows how to write good locators and use Chrome DevTools.
+* [Behavior-Driven Python with pytest-bdd](https://testautomationu.applitools.com/behavior-driven-python-with-pytest-bdd/) shows how to use `pytest-bdd` to write BDD-style tests.
+* [Setting a Foundation for Successful Test Automation](https://testautomationu.applitools.com/setting-a-foundation-for-successful-test-automation/) shows how to run a testing project the right way.
+
+Other helpful links:
+
+* [AutomationPanda.com](https://automationpanda.com/)
+  * [Python](https://automationpanda.com/python/)
+  * [Testing](https://automationpanda.com/testing/)
+  * [Why Python is Great for Test Automation](https://automationpanda.com/2018/07/26/why-python-is-great-for-test-automation/)
+  * [Web Element Locators for Test Automation](https://automationpanda.com/2019/01/15/web-element-locators-for-test-automation/)
+  * [The Testing Pyramid](https://automationpanda.com/2018/08/01/the-testing-pyramid/)
+* [Selenium with Python](https://selenium-python.readthedocs.io/)
+  * [WebDriver API](https://selenium-python.readthedocs.io/api.html)
+  * [Waits](https://selenium-python.readthedocs.io/waits.html)
+  * [Locating Elements](https://selenium-python.readthedocs.io/locating-elements.html)
+* [pytest.org](https://docs.pytest.org/)
+* [Selenium Grid wiki](https://github.com/SeleniumHQ/selenium/wiki/Grid2)
