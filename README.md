@@ -1,14 +1,10 @@
 # pyohio-2019-web-ui-testing
-This repository contains the companion project for the PyOhio 2019 *Hands-On Web UI Testing* tutorial.
-If you are taking the tutorial, then please clone this repository and follow the instructions below.
-
-## Author
-
-The tutorial is written and delivered by **Andrew Knight** (aka *Pandy*), the "Automation Panda".
-
-* Twitter: [@AutomationPanda](https://twitter.com/AutomationPanda)
-* Blog: [AutomationPanda.com](https://automationpanda.com/)
-* LinkedIn: [andrew-leland-knight](https://www.linkedin.com/in/andrew-leland-knight/)
+This repository contains the companion project
+for the *Hands-On Web UI Testing* tutorial
+taught by [Andrew Knight](https://twitter.com/AutomationPanda)
+at [PyOhio 2019](https://www.pyohio.org/2019/).
+If you are taking the tutorial,
+then please clone this repository and follow the instructions below.
 
 ## Project Setup
 
@@ -650,3 +646,12 @@ Other helpful links:
   * [Locating Elements](https://selenium-python.readthedocs.io/locating-elements.html)
 * [pytest.org](https://docs.pytest.org/)
 * [Selenium Grid wiki](https://github.com/SeleniumHQ/selenium/wiki/Grid2)
+
+## About the Author
+
+The tutorial is written and delivered by **Andrew Knight** (aka *Pandy*), the "Automation Panda".
+Andy is a Pythonista who specializes in testing and automation.
+
+* Twitter: [@AutomationPanda](https://twitter.com/AutomationPanda)
+* Blog: [AutomationPanda.com](https://automationpanda.com/)
+* LinkedIn: [andrew-leland-knight](https://www.linkedin.com/in/andrew-leland-knight/)
