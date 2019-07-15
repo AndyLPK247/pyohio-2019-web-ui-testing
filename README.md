@@ -649,7 +649,7 @@ Other helpful links:
 
 ## About the Author
 
-The tutorial is written and delivered by **Andrew Knight** (aka *Pandy*), the "Automation Panda".
+This tutorial was written and delivered by **Andrew Knight** (aka *Pandy*), the "Automation Panda".
 Andy is a Pythonista who specializes in testing and automation.
 
 * Twitter: [@AutomationPanda](https://twitter.com/AutomationPanda)
