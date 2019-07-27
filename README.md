@@ -5,6 +5,7 @@ taught by [Andrew Knight](https://twitter.com/AutomationPanda)
 at [PyOhio 2019](https://www.pyohio.org/2019/).
 If you are taking the tutorial,
 then please clone this repository and follow the instructions below.
+The slide deck for the tutorial is also in this repository.
 
 ## Project Setup
 
