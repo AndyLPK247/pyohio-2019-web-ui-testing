@@ -10,7 +10,7 @@ class DuckDuckGoResultPage:
   
   # Locators
 
-  SEARCH_INPUT = (By.NAME, 'q')
+  SEARCH_INPUT = (By.ID, 'search_form_input')
 
   @classmethod
   def PHRASE_RESULTS(cls, phrase):
