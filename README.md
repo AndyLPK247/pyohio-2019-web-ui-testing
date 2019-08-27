@@ -389,11 +389,11 @@ from selenium.webdriver.common.keys import Keys
 ```
 
 Then, write a locator for the search input element.
-If we inspect the page's HTML, we can see that the search element has a "name" attribute set to "q".
-Therefore, we can use the `By.NAME` locator to find the element like this:
+If we inspect the page's HTML, we can see that the search element has an "id" attribute set to "search_form_input_homepage".
+Therefore, we can use the `By.ID` locator to find the element like this:
 
 ```python
-SEARCH_INPUT = (By.NAME, 'q')
+SEARCH_INPUT = (By.ID, 'search_form_input_homepage')
 ```
 
 It's good practice to write locators as page object class variables.
@@ -440,7 +440,7 @@ class DuckDuckGoSearchPage:
 
   # Locators
 
-  SEARCH_INPUT = (By.NAME, 'q')
+  SEARCH_INPUT = (By.ID, 'search_form_input_homepage')
 
   # Initializer
 
@@ -467,13 +467,13 @@ def title(self):
 
 The `search_input_value` method is similar to the `search` method from `DuckDuckGoSearchPage`,
 but instead of sending a command, it asks for state from the page.
-Thankfully, it uses the same locator.
+Thankfully, it uses a similar locator.
 (The "value" attribute contains the text a user types into an "input" element.)
 
 ```python
 from selenium.webdriver.common.by import By
 
-SEARCH_INPUT = (By.NAME, 'q')
+SEARCH_INPUT = (By.ID, 'search_form_input')
 
 def search_input_value(self):
   search_input = self.browser.find_element(*self.SEARCH_INPUT)
@@ -525,7 +525,7 @@ class DuckDuckGoResultPage:
   
   # Locators
 
-  SEARCH_INPUT = (By.NAME, 'q')
+  SEARCH_INPUT = (By.ID, 'search_form_input_homepage')
 
   @classmethod
   def PHRASE_RESULTS(cls, phrase):
